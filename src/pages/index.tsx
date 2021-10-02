@@ -3,12 +3,12 @@ import React from "react";
 import { NextPage } from "next";
 import { classnames } from "tailwindcss-classnames";
 
-import { Button } from "../components/Button";
+import { Piece } from "../components/Piece";
 
 const Page: NextPage = () => {
   return (
     <main className={classnames("container")}>
-      <Button>button</Button>
+      <Piece />
     </main>
   );
 };

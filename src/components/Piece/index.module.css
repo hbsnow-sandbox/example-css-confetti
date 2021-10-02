@@ -1,0 +1,22 @@
+.piece {
+  animation: piece linear infinite;
+  animation-duration: 2s;
+}
+
+@keyframes piece {
+  0% {
+    transform: rotate3d(1, 1, 1, 0deg);
+  }
+  25% {
+    transform: rotate3d(1, 1, 1, 90deg);
+  }
+  50% {
+    transform: rotate3d(1, 1, 1, 180deg);
+  }
+  75% {
+    transform: rotate3d(1, 1, 1, 270deg);
+  }
+  100% {
+    transform: rotate3d(1, 1, 1, 359deg);
+  }
+}
