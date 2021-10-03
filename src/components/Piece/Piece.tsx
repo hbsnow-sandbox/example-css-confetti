@@ -14,15 +14,13 @@ export type Props = Readonly<
 >;
 
 export const Piece = forwardRef<HTMLDivElement, Props>((props, ref) => {
-  const { color: backgroundColor, width, height } = props;
+  const { color: frontColor, width, height } = props;
 
   return (
-    <div
-      ref={ref}
-      className={style.piece}
-      style={{ backgroundColor, width, height }}
-      {...props}
-    />
+    <div ref={ref} className={style.root} style={{ width, height }} {...props}>
+      <div className={style.front} style={{ backgroundColor: frontColor }} />
+      <div className={style.back} />
+    </div>
   );
 });
 Piece.displayName = "Piece";

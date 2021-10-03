@@ -1,6 +1,21 @@
-.piece {
+.root {
+  transform-style: preserve-3d;
   animation: piece linear infinite;
   animation-duration: 2s;
+}
+
+.front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  backface-visibility: hidden;
 }
 
 @keyframes piece {
