@@ -1,23 +1,26 @@
-import { ComponentPropsWithoutRef, CSSProperties, forwardRef } from "react";
+import {
+  CSSProperties,
+  DetailedHTMLProps,
+  forwardRef,
+  HTMLAttributes,
+} from "react";
 
 import style from "./index.module.css";
 
-export type Props = Readonly<
-  Omit<
-    ComponentPropsWithoutRef<"div">,
-    "className" | "color" | "width" | "height" | "style"
-  > & {
-    color: Required<CSSProperties>["backgroundColor"];
-    width: Required<CSSProperties>["width"];
-    height: Required<CSSProperties>["height"];
-  }
->;
+type Props = Omit<
+  DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+  "className" | "color" | "width" | "height"
+> & {
+  color: Required<CSSProperties>["backgroundColor"];
+  width: Required<CSSProperties>["width"];
+  height: Required<CSSProperties>["height"];
+};
 
 export const Piece = forwardRef<HTMLDivElement, Props>((props, ref) => {
-  const { color: frontColor, width, height } = props;
+  const { color: frontColor, width, height, ...rest } = props;
 
   return (
-    <div ref={ref} className={style.root} style={{ width, height }} {...props}>
+    <div ref={ref} className={style.root} style={{ width, height }} {...rest}>
       <div className={style.front} style={{ backgroundColor: frontColor }} />
       <div className={style.back} />
     </div>
