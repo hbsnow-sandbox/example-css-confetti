@@ -1,7 +1,6 @@
 .root {
   transform-style: preserve-3d;
   animation: piece linear infinite;
-  animation-duration: 1s;
 }
 
 .front {

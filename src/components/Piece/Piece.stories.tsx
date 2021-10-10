@@ -20,4 +20,7 @@ Default.args = {
   color: "green",
   width: 100,
   height: 150,
+  style: {
+    animationDuration: "2s",
+  },
 };

@@ -24,6 +24,11 @@ const Template: ComponentStory<typeof Confetti> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   count: 30,
-  duration: [2, 4],
-  delay: [1, 12],
+  pieceContainer: {
+    duration: [2, 4],
+    delay: [1, 12],
+  },
+  piece: {
+    duration: [1, 3],
+  },
 };
