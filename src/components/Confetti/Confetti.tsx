@@ -1,20 +1,39 @@
-import { DetailedHTMLProps, forwardRef, HTMLAttributes } from "react";
+import { useMemo } from "react";
 
+import { getRandomArbitrary } from "../../utils/getRandomArbitrary";
 import { Piece } from "../Piece";
 import style from "./index.module.css";
 
-type Props = Omit<
-  DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-  "className"
->;
+type Props = {
+  count: number;
+  duration: [number, number];
+  delay: [number, number];
+};
 
-export const Confetti = forwardRef<HTMLDivElement, Props>((props, ref) => {
+export const Confetti = (props: Props) => {
+  const { count, duration, delay } = props;
+
+  const pieceStyles = useMemo(() => {
+    return [...Array(count)].map(() => {
+      const pieceStyle = {
+        marginLeft: `${Math.random() * 100}%`,
+        animationDelay: `-${getRandomArbitrary(...delay)}s`,
+        animationDuration: `${getRandomArbitrary(...duration)}s`,
+      };
+
+      return pieceStyle;
+    });
+  }, [count, delay, duration]);
+
   return (
-    <div ref={ref} className={style.root} {...props}>
-      <div className={`${style.piece}`}>
-        <Piece color="green" width={10} height={10} />
-      </div>
+    <div className={style.root}>
+      {pieceStyles.map((pieceStyle, i) => {
+        return (
+          <div key={i} className={style.piece} style={pieceStyle}>
+            <Piece color="green" width={10} height={10} />
+          </div>
+        );
+      })}
     </div>
   );
-});
-Confetti.displayName = "Confetti";
+};

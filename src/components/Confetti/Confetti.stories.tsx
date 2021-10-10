@@ -22,4 +22,8 @@ const Template: ComponentStory<typeof Confetti> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  count: 30,
+  duration: [2, 4],
+  delay: [1, 12],
+};
